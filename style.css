@@ -3,4 +3,5 @@
 html{}
 body{background-color: #202020;color: #a3a3a3;}
 .numbers{display: flex;align-content: flex-start;justify-content: center;column-gap: 10px;}
-.numbers input{width: 30px;height: 40px;text-align: center;border: #000d solid 1px;background: #666666;border-radius: 4px;font-size: 20px;}
+.numbers input{width: 30px;height: 40px;text-align: center;border: #000d solid 1px;background: #666666;color: #d3d3d3;border-radius: 4px;font-size: 20px;}
+.numbers input:focus-visible{outline: 3px solid #83c7e8; border-color: transparent;}
