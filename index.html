@@ -41,6 +41,18 @@
         // 이벤트 기본 동작 중단 (기본적으로 붙여넣기 시에 입력창에 모든 내용이 들어가기 때문에 중단시킴)
         event.preventDefault();
     });
+    inputElements.forEach( input => {
+        input.addEventListener("keydown", e => {
+            input.value = '';
+        });
+    });
+    inputElements.forEach( input => {
+        input.addEventListener("input", e => {
+            if(!input.nextElementSibling) return;
+            input.nextElementSibling.focus();
+            input.nextElementSibling.select();
+        });
+    });
 </script>
 
 </body>
