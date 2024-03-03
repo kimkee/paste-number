@@ -43,16 +43,18 @@
     });
     inputElements.forEach( input => {
         input.addEventListener("keydown", e => {
-            input.value = '';
+            // console.log(e.key)
+            // input.value = '';
         });
     });
-    inputElements.forEach( input => {
-        input.addEventListener("input", e => {
-            if(!input.nextElementSibling) return;
-            input.nextElementSibling.focus();
-            input.nextElementSibling.select();
-        });
-    });
+    const inputCerti = (e)=>{
+        console.log(e.target)
+        console.log(e.data)
+        e.target.value = e.data;
+        if(!e.target.nextElementSibling) return;
+        e.target.nextElementSibling.focus();
+    }
+    inputElements.forEach( input => input.addEventListener("input", e => inputCerti(e) ) );
 </script>
 
 </body>
