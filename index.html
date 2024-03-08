@@ -22,39 +22,44 @@
 </div>
 
 <script>
-    const inputElements = document.querySelectorAll('.numbers input');
-    document.addEventListener('paste', function (event) {
+    const inputEls = document.querySelectorAll('.numbers input');
+    /* document.addEventListener('paste', function (event) {
         // 클립보드에서 데이터 가져오기
-        const clipboardData = event.clipboardData || window.clipboardData;
-        const pastedData = clipboardData.getData('text');
+        const clipData = event.clipboardData || window.clipboardData;
+        const pastedData = clipData.getData('text');
         console.log(pastedData);
 
         // 띄어쓰기로 구분된 숫자 배열로 변환
-        const numbersArray = pastedData.replace(/ /g, '').split('');
+        const numbers = pastedData.replace(/ /g, '').split('');
 
         // 각 input 요소에 값을 설정
-        for (let i = 0; i < Math.min(inputElements.length, numbersArray.length); i++) {
-            console.log(numbersArray[i]);
-            inputElements[i].value = numbersArray[i];
+        for (let i = 0; i < Math.min(inputEls.length, numbers.length); i++) {
+            console.log(numbers[i]);
+            inputEls[i].value = numbers[i];
         }
 
         // 이벤트 기본 동작 중단 (기본적으로 붙여넣기 시에 입력창에 모든 내용이 들어가기 때문에 중단시킴)
         event.preventDefault();
-    });
-    inputElements.forEach( input => {
+    }); */
+    inputEls.forEach( input => {
         input.addEventListener("keydown", e => {
             // console.log(e.key)
             // input.value = '';
         });
     });
-    const inputCerti = (e)=>{
-        console.log(e.target)
-        console.log(e.data)
-        e.target.value = e.data;
+    const inputCheck = async(e)=>{
+        const clipData = e.target.value.replace(/ /g, '').split('');
+        // const pastedData = clipData.getData('text');
+        console.log( await navigator.clipboard.readText());
+        
+        console.log(e.target);
+        console.log(e.target.value);
+        e.target.value = clipData[0];
         if(!e.target.nextElementSibling) return;
         e.target.nextElementSibling.focus();
     }
-    inputElements.forEach( input => input.addEventListener("input", e => inputCerti(e) ) );
+    inputEls.forEach( input => input.addEventListener("input", e => inputCheck(e) ) );
+    // inputEls.forEach( input => input.addEventListener("paste", e => inputCheck(e) ) );
 </script>
 
 </body>
