@@ -47,10 +47,9 @@
             // input.value = '';
         });
     });
-    const inputCheck = async(e)=>{
+    const inputCheck = (e)=>{
         const clipData = e.target.value.replace(/ /g, '').split('');
         // const pastedData = clipData.getData('text');
-        console.log( await navigator.clipboard.readText());
         
         console.log(e.target);
         console.log(e.target.value);
